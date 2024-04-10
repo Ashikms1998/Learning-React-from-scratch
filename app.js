@@ -1,55 +1,67 @@
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-//React Element
+//App Header
 
-const heading = (
-<h1 className="head" tabIndex="1">
-    This is JSX heading
-</h1>
-);
-
-const elem = <span>This is a new element</span>
-
-console.log(heading);
-
-const fn = () => true;
-
-const fn2= () => {
-    return true;
+const Header = () => {
+    return (
+        <div className="header">
+            <div className="logo-container">
+                <img className="logo" src="https://cdn.dribbble.com/users/3617331/screenshots/14275204/media/90252e6a4058a695fa18434a1f7453e0.jpg?resize=320x240&vertical=center"></img>
+            </div>
+            <div className="nav-items">
+                <ul>
+                    <li>Home</li>
+                    <li>About Us</li>
+                    <li>Contact Us</li>
+                    <li>Cart</li>
+                </ul>
+            </div>   
+        </div>
+    );
 };
 
-//above function fn and fn2 are same this format is what we have written down
+//style Card
 
-// React Component
-//1.Class based component -OLD
-//2.Functional compnent -NEW
-
-//REACT functional component
-
-const HeadingComponent = () =>{
-    return <h1 className="heading">This is functional component in JSX</h1>
+const styleCard = {
+    backgroundColor:"#f0f0f0",
 }
 
+//Restaurant Card
 
-const HeadingComponent2 = () =>( 
-    <div id="container">
-         {elem}
-        <h1>{"this is jS inside functional component"}</h1>
-        <h2>{2000+3000}</h2>
-        {heading} {/*Tthis is react element calling that we written above inside a functional componet */}
-         < HeadingComponent /> {/*calling another functional component written above so Thiscode is also called component composition*/}
-        <HeadingComponent></HeadingComponent> {/* The line above and this line is same */}
-        {HeadingComponent()}{/* You can also call this as a function */}
-        <h1 className="heading">This is functional component in JSX2</h1>
+const RestaurantCard = () =>{
+    return (
+        <div className="res-card" style={styleCard}>
+            <img className="res-logo" alt="foodLogo1" src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/60808baa6748596c48b439653d31ec8a"></img>
+            <h3>Emperors Darbar</h3>
+        </div>
+    );
+};
+
+//App Body
+
+const Body = () =>{
+    return (
+        <div className="body">
+            <div className="search">Search</div>
+            <div className="restaurant-container">
+                < RestaurantCard />
+            </div>
+        </div>
+    );
+};
+
+
+
+const AppLayout = () => {
+    return <div className="app">
+        < Header />
+        < Body />
     </div>
-);
+};
 
-//above function HeadingComponent and HeadingComponent2 are same this format is what we have written down
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-//Rendering React Element
-root.render(heading);
-
-//Rendering React Functional Component
-root.render(< HeadingComponent2 />)
+root.render(< AppLayout />)
