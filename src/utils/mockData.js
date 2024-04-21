@@ -1,53 +1,5 @@
-
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-//App Header
-
-const Header = () => {
-    return (
-        <div className="header">
-            <div className="logo-container">
-                <img className="logo" src="https://cdn.dribbble.com/users/3617331/screenshots/14275204/media/90252e6a4058a695fa18434a1f7453e0.jpg?resize=320x240&vertical=center"></img>
-            </div>
-            <div className="nav-items">
-                <ul>
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Contact Us</li>
-                    <li>Cart</li>
-                </ul>
-            </div>   
-        </div>
-    );
-};
-
-//style Card
-
-const styleCard = {
-    backgroundColor:"#f0f0f0",
-}
-
-//Restaurant Card 
-
-const RestaurantCard = (props) =>{
-    const {resData} = props;
-    const {cloudinaryImageId,name,cuisines,avgRating,sla} = resData?.info;
-    return (
-        <div className="res-card" style={styleCard}>
-            <img className="res-logo" alt="foodLogo1" src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_600/${cloudinaryImageId}`}></img>
-            <h3>{name}</h3>
-            <h4 className="res-Cusine" >{cuisines.join(",")}</h4>
-            <h4>{avgRating} stars</h4>
-            <h4>{sla.deliveryTime} minutes</h4>
-        </div>
-    );
-};
-
 //Restaurent
-
-
-const resList = [
+let resList = [
     {
       "info": {
         "id": "118140",
@@ -1701,37 +1653,6 @@ const resList = [
         "type": "WEBLINK"
       }
     }
-  ]
-  
+  ];
 
-//App Body
-//should add key while using map to make it unique but dont try to use
-// INDEX AS KEY!!!!(not a good practice as mentioned in React DOC )
-// insted use a unique ID key from data as a KEY
-
-const Body = () =>{ 
-    return (
-        <div className="body">
-            <div className="search">Search</div>
-            <div className="restaurant-container">
-                {resList.map((restaurant) => (
-                    <RestaurantCard key={restaurant.info.id} resData={restaurant}/>
-                ))}
-            </div>
-        </div>
-    );
-};
-
-
-
-const AppLayout = () => {
-    return <div className="app">
-        < Header />
-        < Body />
-    </div>
-};
-
-
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(< AppLayout />)
+  export default resList;
