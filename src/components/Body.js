@@ -1,6 +1,6 @@
 import RestaurantCard from "./RestaurantCard";
 import resList from "../utils/mockData";
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 //App Body
 
 //should add key while using map to make it unique but dont try to use
@@ -8,8 +8,13 @@ import React, { useState } from 'react'
 // insted use a unique ID key from data as a KEY
 
 const Body = () =>{
- const [res,setRes] = useState(resList);
+const [res,setRes] = useState(resList);
 
+useEffect(()=>{
+    console.log("This is useState")//this will render second
+},[]);
+
+console.log("This is just a console in body")//this will render first then the one above in use Effect
 
     return (
         <div className="body">
